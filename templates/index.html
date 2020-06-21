@@ -1,0 +1,69 @@
+
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').bind('click', function() {
+            $.getJSON('/background_process_test',
+                function(data) {
+              
+            });
+            return false;
+          });
+        });
+</script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+      $('button#btn').click(function(){
+        $.ajax({
+            url: "/_get_data/",
+            type: "POST",
+            success: function(resp){
+                $('div#response').append(resp.data);
+            }
+        });
+      });
+  </script>
+
+ <div class="pimg2">
+    <div class="ptext">
+	<center>
+		
+		<div>
+		
+		</div>
+		<form class="form-inline" action="{{ url_for('final') }}" method="POST" enctype="multipart/form-data">
+			{% for i in  range(0,3) %}
+				<div class="form-group mr-2">
+					<label>{{description[i]}}</label>
+					
+
+			  </div>
+       
+
+<br></br>
+{{ super() }}
+			  {%endfor%}
+<input type="submit" value="Ask me" id="upload-button" class="btn btn-primary">
+		</form>
+ 
+	</center>
+</div>
+</div>
+{% endblock %}
+
+{% block styles %}
+{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+<link rel="stylesheet"  href="{{url_for('.static', filename='./css/style.css')}}">
+{% endblock %}
+
+
+
+

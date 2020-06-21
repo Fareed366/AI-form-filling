@@ -1,0 +1,20 @@
+
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+	 <div class="pimg1">
+    <div class="ptext">
+	loading........
+	</div>
+	</div>
+	<script>
+window.onload = function() {
+  window.location.href="/show"
+};
+</script>
+{% endblock %}
+
+{% block styles %}
+{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+<link rel="stylesheet"  href="{{url_for('.static', filename='./css/style.css')}}">
+{% endblock %}
